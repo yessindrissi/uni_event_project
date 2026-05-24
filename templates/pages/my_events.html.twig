@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}My Events{% endblock %}
+{% block page %}my-events{% endblock %}
+
+{% block body %}
+
+<div class="container my-events-layout">
+
+  <aside class="my-events-sidebar">
+
+    <div class="points-widget">
+      <div class="points-count">1200</div>
+      <div class="points-label">Points</div>
+    </div>
+
+    <button class="btn btn-secondary btn-full">Upcoming</button>
+    <button class="btn btn-secondary btn-full">Past Events</button>
+
+  </aside>
+
+  <main class="ticket-list">
+
+    {% for i in 1..3 %}
+
+      <div class="ticket-card">
+
+        <div class="ticket-card-accent"></div>
+
+        <div class="ticket-card-image">
+          <img src="https://via.placeholder.com/200x200">
+        </div>
+
+        <div class="ticket-card-body">
+
+          <h3>Event {{ i }}</h3>
+          <p class="text-muted">Your registered event</p>
+
+          <div class="ticket-card-actions">
+            <button class="btn btn-primary btn-sm">QR Code</button>
+            <button class="btn btn-ghost btn-sm">Cancel</button>
+          </div>
+
+        </div>
+
+      </div>
+
+    {% endfor %}
+
+  </main>
+
+</div>
+
+{% endblock %}

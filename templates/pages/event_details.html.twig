@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Event Details{% endblock %}
+{% block page %}event-details{% endblock %}
+
+{% block body %}
+
+<div class="container event-detail-layout">
+
+  <main>
+
+    <div class="event-detail-hero">
+      <img src="https://via.placeholder.com/1200x500">
+      <div class="event-detail-hero-overlay"></div>
+
+      <div class="event-detail-hero-content">
+        <h1 class="text-4xl">Amazing Event</h1>
+      </div>
+    </div>
+
+    <div class="info-list">
+
+      <div class="info-item">
+        <div class="info-item-icon">📅</div>
+        <div>
+          <div class="info-item-label">Date</div>
+          <div class="info-item-value">Tomorrow</div>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-item-icon">📍</div>
+        <div>
+          <div class="info-item-label">Location</div>
+          <div class="info-item-value">INSAT Campus</div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <aside class="sticky-sidebar">
+
+    <button class="btn btn-primary btn-full">Join Event</button>
+    <button class="btn btn-secondary btn-full">Save</button>
+
+  </aside>
+
+</div>
+
+{% endblock %}

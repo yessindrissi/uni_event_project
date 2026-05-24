@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+{% block page %}register{% endblock %}
+
+{% block body %}
+
+<div class="auth-layout">
+
+  <div class="auth-panel-right">
+    <div class="auth-panel-right-inner">
+
+      <div class="auth-card">
+
+        <div class="auth-header">
+          <h1 class="auth-title">Create account</h1>
+          <p class="auth-subtitle">Join INSAT Events</p>
+        </div>
+
+        <form>
+
+          <div class="form-group">
+            <label class="form-label">Full name</label>
+            <input type="text" class="form-input" placeholder="John Doe">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-input" placeholder="you@example.com">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-input" placeholder="••••••••">
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-full">
+            Register
+          </button>
+
+        </form>
+
+        <div class="auth-footer">
+          Already have an account?
+          <a href="{{ path('login') }}">Login</a>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

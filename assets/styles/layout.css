@@ -1,0 +1,286 @@
+/* ============================================================
+   INSAT Events — layout.css
+   Grid layouts, page-level structure, responsive grids
+   ============================================================ */
+
+/* ── Auth Layout ── */
+.auth-layout {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.auth-panel-left {
+  background: linear-gradient(145deg, #0d1f4e 0%, #1a56e8 50%, #f54b64 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-panel-left::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(245,75,100,.35) 0%, transparent 55%),
+    radial-gradient(ellipse at 70% 80%, rgba(26,86,232,.45) 0%, transparent 55%);
+}
+
+.auth-panel-left-noise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px;
+}
+
+.auth-panel-left-content {
+  position: relative;
+  z-index: 1;
+}
+
+.auth-panel-left-quote {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.2rem;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.auth-panel-left-sub {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.65);
+  max-width: 360px;
+  line-height: 1.6;
+}
+
+.auth-panel-left-badges {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.auth-panel-left-badge {
+  padding: 5px 12px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: var(--r-full);
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.85);
+  font-weight: 500;
+}
+
+.auth-panel-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 2rem;
+  overflow-y: auto;
+}
+
+.auth-panel-right-inner {
+  width: 100%;
+  max-width: 460px;
+}
+
+@media (max-width: 860px) {
+  .auth-layout { grid-template-columns: 1fr; }
+  .auth-panel-left { display: none; }
+  .auth-panel-right { padding: 2rem 1rem; }
+}
+
+/* ── Events Grid ── */
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 1024px) {
+  .events-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .events-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Recommended Row (horizontal scroll) ── */
+.events-row {
+  display: flex;
+  gap: 1.1rem;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scrollbar-width: none;
+}
+.events-row::-webkit-scrollbar { display: none; }
+
+.events-row .event-card {
+  min-width: 300px;
+  max-width: 300px;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}
+
+/* ── Event Detail Layout ── */
+.event-detail-layout {
+  display: grid;
+  grid-template-columns: 1fr var(--sidebar-w);
+  gap: 2.5rem;
+  align-items: start;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+}
+
+@media (max-width: 900px) {
+  .event-detail-layout {
+    grid-template-columns: 1fr;
+  }
+  .sticky-sidebar {
+    position: static;
+    order: -1;
+  }
+}
+
+/* ── My Events Layout ── */
+.my-events-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 2rem;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+  align-items: start;
+}
+
+.my-events-sidebar {
+  position: sticky;
+  top: calc(var(--nav-h) + 1.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.ticket-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (max-width: 860px) {
+  .my-events-layout {
+    grid-template-columns: 1fr;
+  }
+  .my-events-sidebar { position: static; }
+  .ticket-card-image { width: 90px; }
+}
+
+@media (max-width: 500px) {
+  .ticket-card { flex-direction: column; }
+  .ticket-card-image { width: 100%; height: 140px; }
+}
+
+/* ── Page Sections ── */
+.page-section {
+  padding: 3rem 0;
+}
+.page-section + .page-section {
+  border-top: 1px solid var(--border);
+}
+
+/* ── Toolbar row (search + filters) ── */
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+  flex-wrap: wrap;
+}
+.toolbar .search-bar { flex: 1; max-width: 360px; }
+.toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-left: auto;
+}
+
+@media (max-width: 600px) {
+  .toolbar { flex-direction: column; align-items: stretch; }
+  .toolbar .search-bar { max-width: 100%; }
+  .toolbar-right { margin-left: 0; justify-content: flex-start; }
+}
+
+/* ── Info rows in event detail ── */
+.info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.info-item-icon {
+  width: 36px; height: 36px;
+  border-radius: var(--r-md);
+  background: var(--bg-muted);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.info-item-body { flex: 1; }
+.info-item-label {
+  font-size: 0.73rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+}
+.info-item-value {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* ── Map placeholder ── */
+.map-placeholder {
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: var(--bg-muted);
+  border: 1px solid var(--border);
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  position: relative;
+}
+
+.map-placeholder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(0deg, var(--border) 0, var(--border) 1px, transparent 1px, transparent 40px),
+    repeating-linear-gradient(90deg, var(--border) 0, var(--border) 1px, transparent 1px, transparent 40px);
+  opacity: 0.4;
+}
+
+.map-placeholder-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+.map-placeholder-content .icon { font-size: 2rem; margin-bottom: 6px; }

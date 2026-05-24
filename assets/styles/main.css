@@ -1,0 +1,293 @@
+/* ============================================================
+   INSAT Events Management System — main.css
+   Global variables, resets, dark mode, typography
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap');
+
+/* ── CSS Custom Properties ── */
+:root {
+  /* Brand */
+  --brand-primary: #1a56e8;
+  --brand-accent:  #f54b64;
+  --brand-gold:    #f5a623;
+
+  /* Light Theme */
+  --bg-base:       #f9f8f6;
+  --bg-surface:    #ffffff;
+  --bg-muted:      #f0eeeb;
+  --bg-hover:      #e8e5e0;
+  --border:        #e2ddd8;
+  --border-strong: #c8c2bb;
+
+  --text-primary:  #181614;
+  --text-secondary:#6b6560;
+  --text-muted:    #9b948e;
+  --text-inverse:  #ffffff;
+
+  /* Semantic */
+  --success: #16a34a;
+  --warning: #d97706;
+  --error:   #dc2626;
+  --info:    #0ea5e9;
+
+  /* Elevation */
+  --shadow-xs: 0 1px 2px rgba(0,0,0,.05);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,.07), 0 1px 2px rgba(0,0,0,.04);
+  --shadow-md: 0 8px 24px rgba(0,0,0,.09), 0 2px 6px rgba(0,0,0,.05);
+  --shadow-lg: 0 20px 48px rgba(0,0,0,.12), 0 4px 12px rgba(0,0,0,.06);
+  --shadow-xl: 0 32px 64px rgba(0,0,0,.16);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
+  --dur-fast:   150ms;
+  --dur-base:   250ms;
+  --dur-slow:   400ms;
+
+  /* Radius */
+  --r-sm:  6px;
+  --r-md:  12px;
+  --r-lg:  20px;
+  --r-xl:  28px;
+  --r-full: 999px;
+
+  /* Layout */
+  --max-w: 1280px;
+  --nav-h: 68px;
+  --sidebar-w: 340px;
+
+  /* Glass */
+  --glass-bg:     rgba(255,255,255,0.72);
+  --glass-border: rgba(255,255,255,0.5);
+}
+
+/* ── Dark Mode ── */
+[data-theme="dark"] {
+  --bg-base:       #0f0e0d;
+  --bg-surface:    #1a1917;
+  --bg-muted:      #242220;
+  --bg-hover:      #2e2b28;
+  --border:        #302d2a;
+  --border-strong: #45403b;
+
+  --text-primary:  #f5f2ee;
+  --text-secondary:#a09890;
+  --text-muted:    #6b6560;
+  --text-inverse:  #0f0e0d;
+
+  --shadow-xs: 0 1px 2px rgba(0,0,0,.3);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,.4), 0 1px 2px rgba(0,0,0,.2);
+  --shadow-md: 0 8px 24px rgba(0,0,0,.5), 0 2px 6px rgba(0,0,0,.3);
+  --shadow-lg: 0 20px 48px rgba(0,0,0,.6), 0 4px 12px rgba(0,0,0,.4);
+
+  --glass-bg:     rgba(26,25,23,0.8);
+  --glass-border: rgba(255,255,255,0.08);
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-optical-sizing: auto;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  line-height: 1.6;
+  transition: background-color var(--dur-base) var(--ease-out),
+              color var(--dur-base) var(--ease-out);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+img, video { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+input, select, textarea { font-family: inherit; }
+ul, ol { list-style: none; }
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'DM Serif Display', Georgia, serif;
+  line-height: 1.2;
+  font-weight: 400;
+}
+
+/* ── Typography Scale ── */
+.text-xs   { font-size: 0.75rem; }
+.text-sm   { font-size: 0.875rem; }
+.text-base { font-size: 1rem; }
+.text-lg   { font-size: 1.125rem; }
+.text-xl   { font-size: 1.25rem; }
+.text-2xl  { font-size: 1.5rem; }
+.text-3xl  { font-size: 1.875rem; }
+.text-4xl  { font-size: 2.25rem; }
+.text-5xl  { font-size: 3rem; }
+
+.font-light  { font-weight: 300; }
+.font-normal { font-weight: 400; }
+.font-medium { font-weight: 500; }
+.font-semi   { font-weight: 600; }
+
+.text-primary   { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted     { color: var(--text-muted); }
+.text-accent    { color: var(--brand-accent); }
+.text-brand     { color: var(--brand-primary); }
+
+/* ── Utility ── */
+.container {
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); border: 0;
+}
+
+/* ── Toast Notification System ── */
+.toast-container {
+  position: fixed;
+  top: calc(var(--nav-h) + 16px);
+  right: 1rem;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.toast {
+  pointer-events: all;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-lg);
+  font-size: 0.875rem;
+  font-weight: 500;
+  min-width: 280px;
+  max-width: 380px;
+  animation: toastIn var(--dur-slow) var(--ease-out) forwards;
+  transition: opacity var(--dur-base) var(--ease-out);
+}
+
+.toast.toast-success { border-left: 3px solid var(--success); }
+.toast.toast-error   { border-left: 3px solid var(--error); }
+.toast.toast-info    { border-left: 3px solid var(--info); }
+.toast.toast-warning { border-left: 3px solid var(--warning); }
+
+.toast .toast-icon { font-size: 1.1rem; flex-shrink: 0; }
+.toast .toast-msg  { flex: 1; }
+.toast .toast-close {
+  margin-left: auto; padding: 2px; border-radius: 4px;
+  color: var(--text-muted); font-size: 1rem; line-height: 1;
+  cursor: pointer; flex-shrink: 0;
+}
+.toast .toast-close:hover { color: var(--text-primary); }
+
+.toast.exiting { animation: toastOut var(--dur-base) var(--ease-in-out) forwards; }
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translateX(20px) scale(0.96); }
+  to   { opacity: 1; transform: translateX(0) scale(1); }
+}
+@keyframes toastOut {
+  from { opacity: 1; transform: translateX(0) scale(1); }
+  to   { opacity: 0; transform: translateX(20px) scale(0.96); }
+}
+
+/* ── Page Fade-in ── */
+@keyframes pageFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.page-enter { animation: pageFadeIn 0.5s var(--ease-out) forwards; }
+
+/* ── Scroll Progress Bar ── */
+#progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--brand-primary), var(--brand-accent));
+  z-index: 10000;
+  transition: width 0.1s linear;
+}
+
+/* ── Loading Skeleton ── */
+@keyframes shimmer {
+  0%   { background-position: -468px 0; }
+  100% { background-position: 468px 0; }
+}
+
+.skeleton {
+  background: linear-gradient(
+    to right,
+    var(--bg-muted) 8%,
+    var(--bg-hover) 18%,
+    var(--bg-muted) 33%
+  );
+  background-size: 800px 104px;
+  animation: shimmer 1.4s infinite linear;
+  border-radius: var(--r-sm);
+}
+
+/* ── Modal Overlay ── */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(6px);
+  z-index: 8000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  animation: fadeOverlay var(--dur-base) var(--ease-out) forwards;
+}
+
+.modal-box {
+  background: var(--bg-surface);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-xl);
+  padding: 2rem;
+  width: 100%;
+  max-width: 440px;
+  position: relative;
+  animation: modalUp var(--dur-slow) var(--ease-out) forwards;
+}
+
+@keyframes fadeOverlay {
+  from { opacity: 0; } to { opacity: 1; }
+}
+@keyframes modalUp {
+  from { opacity: 0; transform: translateY(24px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem; right: 1rem;
+  width: 32px; height: 32px;
+  border-radius: var(--r-full);
+  background: var(--bg-muted);
+  color: var(--text-secondary);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+  transition: background var(--dur-fast), color var(--dur-fast);
+}
+.modal-close:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
