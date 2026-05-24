@@ -1,0 +1,112 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}INSAT Events — Home{% endblock %}
+{% block page %}home{% endblock %}
+
+{% block styles %}
+<style>
+.hero-mesh {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 700px 500px at 70% -10%, rgba(26,86,232,.07) 0%, transparent 60%),
+    radial-gradient(ellipse 500px 400px at -5% 60%, rgba(245,75,100,.06) 0%, transparent 60%);
+}
+
+.hero-stat + .hero-stat {
+  padding-left: 2rem;
+  border-left: 1px solid var(--border);
+}
+</style>
+{% endblock %}
+
+{% block body %}
+
+<!-- NAVBAR (unchanged for now — we’ll modularize later) -->
+<nav class="navbar" role="navigation" aria-label="Main">
+  <div class="container navbar-inner">
+
+    <a href="{{ path('home') }}" class="navbar-logo">
+      <div class="navbar-logo-mark">IE</div>
+      <span class="navbar-logo-text">INSAT <span>Events</span></span>
+    </a>
+
+    <button class="nav-burger">☰</button>
+
+    <ul class="navbar-nav">
+      <li><a href="{{ path('home') }}" class="nav-link active">Home</a></li>
+
+      <li><a href="/login" class="nav-link">Sign In</a></li>
+      <li><a href="/register" class="btn btn-primary btn-sm">Register Free</a></li>
+
+      <li>
+        <button class="theme-toggle">🌙</button>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-mesh"></div>
+
+  <div class="container" style="position:relative;z-index:1">
+
+    <div class="hero-label">
+      <span>🎓</span> INSAT Student Events Platform
+    </div>
+
+    <h1 class="hero-title">
+      Discover what's happening at <em>INSAT</em>
+    </h1>
+
+    <p class="hero-desc">
+      From tech summits to cultural nights — find, register, and attend events.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#events" class="btn btn-primary btn-lg">Explore Events →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section class="page-section" id="events">
+  <div class="container">
+
+    <div class="section-header">
+      <h2 class="section-title">Upcoming <span>Events</span></h2>
+    </div>
+
+    <div class="toolbar">
+      <div class="search-bar">
+        <input type="search" placeholder="Search events...">
+      </div>
+
+      <div class="filter-chips">
+        <button class="chip active" data-filter="all">All</button>
+        <button class="chip" data-filter="Technology">Tech</button>
+        <button class="chip" data-filter="Workshop">Workshop</button>
+        <button class="chip" data-filter="Cultural">Cultural</button>
+      </div>
+    </div>
+
+    <div class="events-grid" id="events-grid"></div>
+
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <span>© 2026 INSAT Events</span>
+  </div>
+</footer>
+
+{% endblock %}
